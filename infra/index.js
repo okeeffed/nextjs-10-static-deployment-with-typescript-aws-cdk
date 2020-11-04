@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const cdk = require("@aws-cdk/core");
+const s3_static_site_with_cloudfront_1 = require("./stacks/s3-static-site-with-cloudfront");
+const app = new cdk.App();
+const staticSite = new s3_static_site_with_cloudfront_1.StaticSiteStack(app, 'NextJS10StaticSite', {
+    env: {
+        account: app.node.tryGetContext('account'),
+        region: app.node.tryGetContext('region'),
+    },
+    domainName: 'dennisokeeffe.com',
+    siteSubDomain: 'nextjs-10-static-example',
+});
+// example of adding a tag - please refer to AWS best practices for ideal usage
+cdk.Tags.of(staticSite).add('Project', 'NextJS 10 Example Deployment');
+app.synth();
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLHFDQUFzQztBQUN0Qyw0RkFBMEU7QUFFMUUsTUFBTSxHQUFHLEdBQUcsSUFBSSxHQUFHLENBQUMsR0FBRyxFQUFFLENBQUM7QUFDMUIsTUFBTSxVQUFVLEdBQUcsSUFBSSxnREFBZSxDQUFDLEdBQUcsRUFBRSxvQkFBb0IsRUFBRTtJQUNoRSxHQUFHLEVBQUU7UUFDSCxPQUFPLEVBQUUsR0FBRyxDQUFDLElBQUksQ0FBQyxhQUFhLENBQUMsU0FBUyxDQUFDO1FBQzFDLE1BQU0sRUFBRSxHQUFHLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxRQUFRLENBQUM7S0FDekM7SUFDRCxVQUFVLEVBQUUsbUJBQW1CO0lBQy9CLGFBQWEsRUFBRSwwQkFBMEI7Q0FDMUMsQ0FBQyxDQUFDO0FBRUgsK0VBQStFO0FBQy9FLEdBQUcsQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDLFVBQVUsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxTQUFTLEVBQUUsOEJBQThCLENBQUMsQ0FBQztBQUV2RSxHQUFHLENBQUMsS0FBSyxFQUFFLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgY2RrID0gcmVxdWlyZSgnQGF3cy1jZGsvY29yZScpO1xuaW1wb3J0IHsgU3RhdGljU2l0ZVN0YWNrIH0gZnJvbSAnLi9zdGFja3MvczMtc3RhdGljLXNpdGUtd2l0aC1jbG91ZGZyb250JztcblxuY29uc3QgYXBwID0gbmV3IGNkay5BcHAoKTtcbmNvbnN0IHN0YXRpY1NpdGUgPSBuZXcgU3RhdGljU2l0ZVN0YWNrKGFwcCwgJ05leHRKUzEwU3RhdGljU2l0ZScsIHtcbiAgZW52OiB7XG4gICAgYWNjb3VudDogYXBwLm5vZGUudHJ5R2V0Q29udGV4dCgnYWNjb3VudCcpLFxuICAgIHJlZ2lvbjogYXBwLm5vZGUudHJ5R2V0Q29udGV4dCgncmVnaW9uJyksXG4gIH0sXG4gIGRvbWFpbk5hbWU6ICdkZW5uaXNva2VlZmZlLmNvbScsXG4gIHNpdGVTdWJEb21haW46ICduZXh0anMtMTAtc3RhdGljLWV4YW1wbGUnLFxufSk7XG5cbi8vIGV4YW1wbGUgb2YgYWRkaW5nIGEgdGFnIC0gcGxlYXNlIHJlZmVyIHRvIEFXUyBiZXN0IHByYWN0aWNlcyBmb3IgaWRlYWwgdXNhZ2VcbmNkay5UYWdzLm9mKHN0YXRpY1NpdGUpLmFkZCgnUHJvamVjdCcsICdOZXh0SlMgMTAgRXhhbXBsZSBEZXBsb3ltZW50Jyk7XG5cbmFwcC5zeW50aCgpO1xuIl19
